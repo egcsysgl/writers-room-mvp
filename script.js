@@ -1,6 +1,7 @@
 const STORAGE_KEY = "writersRoomDraft";
 
 const topicInput = document.getElementById("topic");
+const genreSelect = document.getElementById("genre");
 const toneSelect = document.getElementById("tone");
 const lengthSelect = document.getElementById("length");
 const resultArea = document.getElementById("result");
@@ -20,9 +21,9 @@ function updateCharCount() {
   charCount.textContent = `${resultArea.value.length}자`;
 }
 
-function buildDraft(topic, tone, targetChars) {
+function buildDraft(topic, genre, tone, targetChars) {
   const safeTopic = topic.trim() || "일상의 한 장면";
-  const base = `${safeTopic}에 대해 ${tone} 문체로 정리해 보면, 장면의 감정과 의미가 더 또렷하게 드러난다. `;
+  const base = `${safeTopic}을(를) ${genre} 장르로 먼저 풀어내고, 이어서 ${tone} 톤으로 다듬어 보면 이야기의 방향과 분위기가 더 분명해진다. `;
 
   let output = "";
   while (output.length < targetChars) {
@@ -35,6 +36,7 @@ function buildDraft(topic, tone, targetChars) {
 function saveToLocalStorage() {
   const data = {
     topic: topicInput.value,
+    genre: genreSelect.value,
     tone: toneSelect.value,
     length: lengthSelect.value,
     result: resultArea.value,
@@ -54,6 +56,7 @@ function loadFromLocalStorage() {
 
   const data = JSON.parse(raw);
   topicInput.value = data.topic || "";
+  genreSelect.value = data.genre || genreSelect.options[0].value;
   toneSelect.value = data.tone || toneSelect.options[0].value;
   lengthSelect.value = data.length || lengthSelect.options[0].value;
   resultArea.value = data.result || "";
@@ -68,7 +71,7 @@ function clearLocalStorage() {
 
 generateBtn.addEventListener("click", () => {
   const targetChars = Number(lengthSelect.value);
-  const draft = buildDraft(topicInput.value, toneSelect.value, targetChars);
+  const draft = buildDraft(topicInput.value, genreSelect.value, toneSelect.value, targetChars);
 
   resultArea.value = draft;
   updateCharCount();

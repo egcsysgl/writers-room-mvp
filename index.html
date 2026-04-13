@@ -17,13 +17,27 @@
         <label for="topic" class="label">주제 / 키워드</label>
         <input id="topic" type="text" placeholder="예: 봄비가 오던 날의 기억" />
 
-        <label for="tone" class="label">톤</label>
-        <select id="tone">
-          <option value="담백한">담백한</option>
-          <option value="감성적인">감성적인</option>
-          <option value="유머러스한">유머러스한</option>
-          <option value="분석적인">분석적인</option>
-        </select>
+        <div class="field-grid">
+          <div>
+            <label for="genre" class="label">장르</label>
+            <select id="genre">
+              <option value="수필/에세이" selected>수필/에세이</option>
+              <option value="코미디">코미디</option>
+              <option value="판타지">판타지</option>
+              <option value="시사에세이">시사에세이</option>
+              <option value="블랙코미디">블랙코미디</option>
+            </select>
+          </div>
+          <div>
+            <label for="tone" class="label">톤</label>
+            <select id="tone">
+              <option value="담백한">담백한</option>
+              <option value="감성적인">감성적인</option>
+              <option value="유머러스한">유머러스한</option>
+              <option value="분석적인">분석적인</option>
+            </select>
+          </div>
+        </div>
 
         <label for="length" class="label">목표 길이 (글자 수)</label>
         <select id="length">
