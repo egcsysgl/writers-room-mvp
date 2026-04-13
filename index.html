@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>작가실 MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>작가실</h1>
+        <p>아이디어를 정리하고 목표 글자 수에 맞춰 초안을 만들어보세요.</p>
+      </header>
+
+      <section class="card">
+        <label for="topic" class="label">주제 / 키워드</label>
+        <input id="topic" type="text" placeholder="예: 봄비가 오던 날의 기억" />
+
+        <label for="tone" class="label">톤</label>
+        <select id="tone">
+          <option value="담백한">담백한</option>
+          <option value="감성적인">감성적인</option>
+          <option value="유머러스한">유머러스한</option>
+          <option value="분석적인">분석적인</option>
+        </select>
+
+        <label for="length" class="label">목표 길이 (글자 수)</label>
+        <select id="length">
+          <option value="200">짧게 (약 200자)</option>
+          <option value="500" selected>보통 (약 500자)</option>
+          <option value="1000">길게 (약 1000자)</option>
+        </select>
+
+        <div class="actions">
+          <button id="generateBtn" class="btn btn--primary">초안 생성</button>
+          <button id="saveBtn" class="btn">저장</button>
+          <button id="loadBtn" class="btn">불러오기</button>
+          <button id="clearBtn" class="btn btn--danger">삭제</button>
+        </div>
+
+        <p id="status" class="status" aria-live="polite">입력 후 버튼을 눌러 시작하세요.</p>
+      </section>
+
+      <section class="card">
+        <div class="output-head">
+          <h2>결과</h2>
+          <span id="charCount">0자</span>
+        </div>
+        <textarea id="result" rows="12" placeholder="생성된 초안이 여기에 표시됩니다."></textarea>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
